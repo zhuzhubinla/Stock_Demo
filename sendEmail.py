@@ -10,7 +10,7 @@ def connection():
     try:
         smtp=smtplib.SMTP_SSL()
         smtp.connect('smtp.gmail.com',465)
-        smtp.login('zhu.zhubinlala@gmail.com','160815zb@')
+        smtp.login('zhu.zhubinlala@gmail.com','*****')
         #smtp.sendmail(mail_from,mail_to,msg.as_string())
         #smtp.quit()
         print 'ok'
