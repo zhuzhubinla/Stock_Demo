@@ -70,6 +70,43 @@ if __name__ == '__main__':
     logout(smtp)
     
     
+import datetime
+today=datetime.date.today()
+yesterday=today-datetime.timedelta(days=1)
+tomorrow=today+datetime.timedelta(days=1)
+
+
+import datetime,calendar
+last_friday=datetime.date.today()
+oneday=datetime.timedelta(days=1)
+while last_friday.weekday!=calendar.FRIDAY:
+    last_friday-=1
+    
+
+
+import datetime 
+import calendar 
+    
+today = datetime.date.today() 
+target_day = calendar.FRIDAY 
+this_day = today.weekday() 
+delta_to_target = (this_day - target_day) % 7
+last_friday = today - datetime.timedelta(days = delta_to_target)  
+
+
+
+import time,os
+ef repeat_run(cmd,sleepTime=60):
+	while True:
+		os.system(cmd)
+		time.sleep(sleepTime)
+
+		
+repeat_run("print('test')",5)
+
+
+
+    
         
         
     
