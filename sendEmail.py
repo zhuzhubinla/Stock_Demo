@@ -110,7 +110,7 @@ repeat_run("print('test')",5)
 //sched       
 import datetime,time,sched
 def event_function(msg):
-	print('Message: %s recived at%s'%(msg,time.strftime('%Y-%m-%d:%H:%M%s'time.locatime(time.time()))))
+	print('Message: %s recived at%s'%(msg,time.strftime('%Y-%m-%d:%H:%M:%S',time.localtime(time.time())))
 
 if “__name__”==”__main__“:
 	s=sched.scheduler(time.time,time.sleep)
