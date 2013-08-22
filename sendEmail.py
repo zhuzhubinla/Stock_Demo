@@ -136,7 +136,15 @@ def split_function(orig,split_cha):
 
 
 
-
+def vist_folder(path):
+	if os.path.isfile(path):
+		print(path)
+	else:
+		path_list=os.listdir(path)
+		for file_list in path_list:
+			vist_folder(path+os.sep+file_list)
+for i in os.walk(path):
+	print(i)
     
     
     
