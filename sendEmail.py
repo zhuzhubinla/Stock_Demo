@@ -118,7 +118,19 @@ if “__name__”==”__main__“:
 
 
 
-
+def split_function(orig,split_cha):
+    split_txt=orig.split(split_cha)
+    print(split_txt)
+    if len(split_txt)>1:
+        for i in range(0,len(split_txt)):
+            if split_txt[i]!='':
+                split_txt[i]=split_txt[i][0].upper()+split_txt[i][1:]
+                print(split_txt[i])
+            else:
+                continue
+        return ' '.join(split_txt)
+    else:
+        return orig
 
 
 
