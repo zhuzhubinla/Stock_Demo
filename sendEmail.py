@@ -147,4 +147,66 @@ for i in os.walk(path):
 	print(i)
     
     
-    
+import urllib2
+import os
+import re
+from HTMLParser import HTMLParser
+from PyFetion import *
+savePath=r'e:\download'
+if os.path.exists(savePath):
+    print('folder exists')
+else:
+    try:
+        os.makedirs(savePath)
+    except exception:
+        print(exception)
+
+
+#data=urllib.request.urlopen(url).read()
+#filewriter=open(r'e:\download\a.html','w')
+#filewriter.write(urllib.request.urlopen(url).read().decode())
+#filewriter.close()
+#print(data)
+
+
+
+
+class MyHTMLParser(HTMLParser):
+    def __init__(self):
+        self.info=[]
+        HTMLParser.__init__(self)
+       
+    def handle_starttag(self, tag, attrs):
+        if tag=='title':
+            print("Encountered a start tag:", tag)
+    #def handle_endtag(self, tag):
+        #print("Encountered an end tag :", tag)
+    def handle_data(self, data):
+        print data
+        p=re.compile(r'.*\d\d/\d\d')
+        search_data=p.search(data)
+        if search_data:
+            print 'ok'
+            self.info.append(data)
+           
+        else:
+            print 'fail'
+        #print("Encountered some data  :", data)
+            
+url='http://www.weather.com.cn/html/weather/101270101.shtml'
+hearder=('User-Agent','Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36')
+opener=urllib2.build_opener()
+opener.addheaders=[hearder]
+parser = MyHTMLParser()
+openner=opener.open(url)
+parser.feed(openner.read())
+
+sms_info=parser.info[0]
+parser.close()
+print sms_info
+
+phone=PyFetion('13518171925','160815zb','TCP',debug=True)
+phone.login(FetionOnline)
+phone.send_sms(sms_info)
+
+   
