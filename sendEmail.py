@@ -209,4 +209,16 @@ phone=PyFetion('13518171925','160815zb','TCP',debug=True)
 phone.login(FetionOnline)
 phone.send_sms(sms_info)
 
-   
+
+def random_str(randomlength):
+	str = ''
+	chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
+	length = len(chars) - 1
+	random = Random()
+	for i in range(randomlength):
+		str+=chars[random.randint(0, length)]
+	return str
+
+>>> random_str(5)
+'zgCSB
+
