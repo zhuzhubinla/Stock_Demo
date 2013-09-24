@@ -222,3 +222,46 @@ def random_str(randomlength):
 >>> random_str(5)
 'zgCSB
 
+
+import xlrd
+
+def open_excel(filePath):
+    try:
+        data=xlrd.open_workbook(filePath)
+        return data
+    except Exception,e:
+        print 'fail'
+        print str(e)
+
+def calculate_frequent(filePath):
+    number_list=[0]*32
+    data=open_excel(filePath)
+    table=data.sheets()[0]
+    rows=table.nrows
+    cols=table.ncols
+    table.put_cell(1,1,21,'234',0)
+    for row in range(0,rows,1):
+        for col in range(2,cols,1):
+            value=(int)(table.row(row)[col].value)
+            number_list[value-1]+=1
+    return number_list
+
+
+
+def main():
+    number=calculate_frequent('E:\\Case\\numbers.xls')
+    print number
+
+
+if __name__=="__main__":
+    main()
+
+
+>>> xl=Dispatch("Excel.Application")
+>>> xl.Visible=0
+>>> xlsbook=xl.Workbooks.Open('e:\\case\\numbers.xls')
+>>> xlsbook.Worksheets('Sheet1')
+<COMObject <unknown>>
+>>> x=xlsbook.Worksheets('Sheet1')
+>>> x.Cells(1,1,3)
+
