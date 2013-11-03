@@ -265,3 +265,8 @@ if __name__=="__main__":
 >>> x=xlsbook.Worksheets('Sheet1')
 >>> x.Cells(1,1,3)
 
+
+for root, dirs, files in os.walk(fromdir):
+    for filename in files:
+        path=os.path.join(root,filename)            
+        shutil.copyfile(path,'%s/%s'%(todir,filename))
